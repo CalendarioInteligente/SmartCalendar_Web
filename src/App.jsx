@@ -6,13 +6,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.jsx</code> and save to reload.
         </p>
       </header>
     </div>
   );
 }
-
-
 
 export default App;
