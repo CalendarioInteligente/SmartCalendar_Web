@@ -1,14 +1,28 @@
 import './App.css';
 
-function App() {
+function Cadastrar() {
+  return (
+    <form>
+      <label htmlFor="">E-mail:</label>
+      <input type="email" required/>
+      <br/>
+      <label htmlFor="">Senha:</label>
+      <input type="password" required/>
+      <br/>
+      <button>Cadastrar</button>
+    </form>
+  )
+}
 
+function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
+        <Cadastrar/>
       </header>
+      <main>
+        
+      </main>
     </div>
   );
 }
