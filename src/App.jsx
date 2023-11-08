@@ -1,29 +1,31 @@
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Routes as RouterRoutes, Route as RouterRoute } from "react-router-dom"; // Importe Routes e Route
 
-function Cadastrar() {
-  return (
-    <form>
-      <label htmlFor="">E-mail:</label>
-      <input type="email" required/>
-      <br/>
-      <label htmlFor="">Senha:</label>
-      <input type="password" required/>
-      <br/>
-      <button>Cadastrar</button>
-    </form>
-  )
-}
+import SmartCalendar from "./SmartCalendar";
+import LoginPage from "./LoginPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Cadastrar/>
-      </header>
-      <main>
-        
-      </main>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Página Inicial</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <RouterRoutes>
+          <RouterRoute path="/login" element={<LoginPage />} />
+          <RouterRoute path="/" element={<SmartCalendar />} />
+        </RouterRoutes>
+      </div>
+    </Router>
   );
 }
 

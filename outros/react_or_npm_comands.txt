@@ -1,0 +1,8 @@
+PRECISA ESTAR NA PASTA DO REACT:
+
+npm start
+npm install
+
+npm install react-big-calendar moment  -- BIBLIOTECA NESCESSARIA PARA TER O CALENDÁRIO.
+
+npm install react-router-dom  --  BIBLIOTECA NECESSARIA PARA TER MAIS DE UMA PAGINA WEB E NAVEGAR ENTRE ELAS.
