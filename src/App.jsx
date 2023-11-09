@@ -8,23 +8,21 @@ import LoginPage from "./LoginPage";
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Página Inicial</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Página Inicial</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      </nav>
 
-        <RouterRoutes>
-          <RouterRoute path="/login" element={<LoginPage />} />
-          <RouterRoute path="/" element={<SmartCalendar />} />
-        </RouterRoutes>
-      </div>
+      <RouterRoutes>
+        <RouterRoute path="/login" element={<LoginPage />} />
+        <RouterRoute path="/" element={<SmartCalendar />} />
+      </RouterRoutes>
     </Router>
   );
 }

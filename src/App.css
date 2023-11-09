@@ -1,5 +1,21 @@
+:root {
+  --white: #FFFFFF;
+  --light-blue: #00B3FF;
+  --dark-blue: #1945B7;
+
+  --input-color: #E8E8E8;
+
+  /* USADO EM BOTÕES */
+  --light-blue-darkened: #00a7ee;
+  --dark-blue-darkened: #153c9c;
+
+  --light-blue-darkened2: #029ee0;
+  --dark-blue-darkened2: #173a92;
+}
+
 .App {
   text-align: left;
+  font-family: "Abbeze";
 }
 
 .App-logo {
@@ -16,6 +32,93 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+#Login-page {
+  text-align: center;
+  padding-left: 105px;
+  padding-right: 105px;
+  padding-top: 20vh;
+  box-sizing: border-box;
+  background-image: linear-gradient(var(--light-blue), var(--dark-blue));
+  height: 100vh;
+}
+
+@keyframes mouseHovering {
+  from {background-color: rgb(245, 245, 245);}
+  to {background-color: rgb(220, 227, 236);}
+}
+
+#about {
+  font-size: 36;
+  padding-right: 97px;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  color: var(--white)
+}
+
+#login input[type="password"], input[type="email"] {
+  background-color: var(--input-color);
+  border: none;
+  height: 47px;
+  border: 8px;
+  font-size: 24px;
+}
+
+#login button {
+  padding: 0;
+  border: none;
+  background: none;
+  background-image: linear-gradient(var(--light-blue), var(--dark-blue));
+  border-radius: 35px;
+  height: 66px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--white);
+}
+
+#login button:hover {
+  cursor: pointer;
+  background-image: linear-gradient(var(--light-blue-darkened), var(--dark-blue-darkened));
+}
+
+#login button:hover:active {
+  animation: button-click-anim 0.25s forwards;
+  background-image: linear-gradient(var(--light-blue-darkened2), var(--dark-blue-darkened2));
+}
+
+@keyframes button-click-anim {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.98);
+  }
+}
+
+#login {
+  text-align: left;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2rem;
+  width: 400px;
+  background-image: linear-gradient(var(--white), #e6e6e6);
+  margin: 0 auto;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.589);
+  border-radius: 8px;
+  animation: mouseHovering 1s normal forwards ease-in-out;
+  font-size: 30px;
+}
+
+#login:hover {
+  animation-play-state:running;
+}
+
+#login:not(:hover) {
+  animation-play-state:paused;
 }
 
 .App-link {
