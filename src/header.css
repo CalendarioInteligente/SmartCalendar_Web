@@ -1,0 +1,15 @@
+header > NAV {
+    display: inline;
+}
+
+header > nav > ul {
+    float: left;
+}
+
+header > nav > #login-btn {
+    float: right;
+}
+
+#head {
+display: inline;
+}
