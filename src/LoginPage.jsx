@@ -4,7 +4,7 @@ import './App.css'
 const About = () => {
   return (
     <div id="about">
-      <h1 style={{textAlign: "center", fontFamily: "Sansita One", fontSize: 31}}>Smart Calendar</h1>
+      <h1>Smart Calendar</h1>
       <p>
       &emsp; Desperte o potencial do seu dia-a-dia<br/>
         com o Smart Calendar - sua chave para<br/>
@@ -12,7 +12,7 @@ const About = () => {
         recursos intuitivos e personalizados,<br/>
         otimize seu tempo e alcance seus objetivos<br/>
         com facilidade. Viva com propósito<br/>
-        agende ocm inteligência!<br/>
+        agende com inteligência!<br/>
       </p>
     </div>
   )
@@ -31,28 +31,25 @@ const LoginArea = () => {
   return (
     <div id="login">
       <form>
-        <div>
-          <label>Email:</label><br/>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Senha:</label><br/>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <a href="" style={{fontSize: 19, textAlign: "right"}}>esqueci minha senha</a>
-        </div><br/>
-        <button style={{textAlign: "center"}} type="submit" onClick={handleLogin}>logar</button>
+        <label>Email:</label><br/>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <br/><br/>
+        <label>Senha:</label><br/>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <a href="" style={{fontSize: 19, float: "right"}}>esqueci minha senha</a>
+        <button style={{marginTop: 29, textAlign: "center"}} type="submit" onClick={handleLogin}>logar</button>
       </form>
-      <p>Não possui cadastro?<br/><a href="">cadastre-se</a></p>
+      <p style={{fontSize: 24, textAlign: "center"}}>Não possui cadastro?<br/><a href="">cadastre-se</a></p>
     </div>
   );
 }
@@ -60,7 +57,6 @@ const LoginArea = () => {
 const LoginPage = () => {
   return (
     <div id="Login-page">
-      
       <About/>
       {(2< 9) ? <LoginArea/> : <About/>}
     </div>
