@@ -1,0 +1,29 @@
+button {
+    border: none;
+    background: none;
+    background-image: linear-gradient(var(--light-blue), var(--dark-blue));
+    border-radius: 35px;
+    height: 66px;
+    width: 100%;
+    font-size: 30px;
+    color: var(--white);
+}
+
+button:hover {
+    cursor: pointer;
+    background-image: linear-gradient(var(--light-blue-darkened), var(--dark-blue-darkened));
+}
+
+button:hover:active {
+    animation: button-click-anim 0.15s forwards;
+    background-image: linear-gradient(var(--light-blue-darkened2), var(--dark-blue-darkened2));
+}
+
+@keyframes button-click-anim {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.98);
+    }
+}

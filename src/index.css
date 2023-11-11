@@ -1,3 +1,42 @@
+:root {
+  --white: #FFFFFF;
+  --light-blue: #00B3FF;
+  --dark-blue: #1945B7;
+
+  --input-color: #E8E8E8;
+
+  --a-color: #117EFF;
+
+  /* Buttons */
+  --light-blue-darkened: #00a7ee;
+  --dark-blue-darkened: #153c9c;
+
+  --light-blue-darkened2: #029ee0;
+  --dark-blue-darkened2: #173a92;
+}
+
+@font-face {
+  font-family: 'Inika-Regular';
+  src: url("../fonts/Inika-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'SansitaOne';
+  src: url("../fonts/SansitaOne.ttf");
+}
+
+@font-face {
+  font-family: 'ABeeZee-Regular';
+  src: url("../fonts/ABeeZee-Regular.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

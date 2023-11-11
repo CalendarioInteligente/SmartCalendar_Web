@@ -1,0 +1,15 @@
+.login-page-section-container {
+    background-image: linear-gradient(var(--light-blue), var(--dark-blue));
+    /*padding: 20vh 5px 10vh 5%;
+    padding: 20vh 20vw 20vh 20vw;*/
+    min-height: 100vh;
+    min-width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 97px;
+    align-content: center;
+    padding: 100px;
+}

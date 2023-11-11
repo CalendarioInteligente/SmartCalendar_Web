@@ -1,0 +1,18 @@
+#about {
+    font-size: 36px;
+    /*padding-right: 97px;
+    display: inline-block;
+    vertical-align: middle;*/
+    text-align: left;
+    color: var(--white);
+}
+
+#about > p {
+    font-family: Inika-Regular;
+}
+
+#about > h1 {
+    font-family: SansitaOne;
+    font-size: 61px;
+    text-shadow: 4px 4px 4px #0000005e;
+}

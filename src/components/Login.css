@@ -1,0 +1,28 @@
+.login-container {
+    font-family: ABeeZee-Regular;
+    text-align: left;
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    min-height: 564px;
+    max-height: 0;
+    max-width: 438px;
+    background-image: linear-gradient(var(--white), #e6e6e6);
+    padding: 85px 56px 81px 56px;
+    box-shadow: 4px 4px 37px rgba(0, 0, 0, 0.55);
+    border-radius: 8px;
+    font-size: 30px;
+  }
+  
+.login-container input {
+    background-color: var(--input-color);
+    border: none;
+    height: 47px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 24px;
+}
+
+.login-container input:focus {
+    outline: none;
+    border: 1px solid rgb(182, 182, 182);
+}

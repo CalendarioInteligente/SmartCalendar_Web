@@ -1,25 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 import { Routes as RouterRoutes, Route as RouterRoute } from "react-router-dom"; // Importe Routes e Route
-import './header.css'
+
+import './App.css'
 
 import SmartCalendar from "./SmartCalendar";
-import LoginPage from "./LoginPage";
+import LoginPage from "./pages/LoginPage";
+import Header from './components/Header'
 
 function App() {
   return (
     <Router>
-      <header>
-        <nav>
-          <ul>
-            <Link to="/">Página Inicial</Link>
-          </ul>
-          <ul ID="login-btn">
-            <Link to="/login">Login</Link>
-          </ul>
-        </nav>
-      </header>
-
+      <Header/>
       <RouterRoutes>
         <RouterRoute path="/login" element={<LoginPage />} />
         <RouterRoute path="/" element={<SmartCalendar />} />
