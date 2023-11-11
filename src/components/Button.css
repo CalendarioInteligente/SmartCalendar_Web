@@ -7,23 +7,15 @@ button {
     width: 100%;
     font-size: 30px;
     color: var(--white);
+    transition: all 0.15s ease;
 }
 
 button:hover {
-    cursor: pointer;
     background-image: linear-gradient(var(--light-blue-darkened), var(--dark-blue-darkened));
+    cursor: pointer;
 }
 
 button:hover:active {
-    animation: button-click-anim 0.15s forwards;
     background-image: linear-gradient(var(--light-blue-darkened2), var(--dark-blue-darkened2));
-}
-
-@keyframes button-click-anim {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(0.98);
-    }
+    transform: scale(0.95);
 }
