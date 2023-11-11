@@ -1,6 +1,6 @@
 header {
+    height: 58px;
     width: 100%;
-    display: block;
 }
 
 header > nav {

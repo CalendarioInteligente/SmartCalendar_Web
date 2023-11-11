@@ -1,12 +1,12 @@
-.login-page-section-container {
+.login-page-container {
     background-image: linear-gradient(var(--light-blue), var(--dark-blue));
-    min-height: 100vh;
-    min-width: 100vw;
+    max-width: 100%;
+    min-height: calc(100vh - 58px); /*Header offset*/
+    padding: 50px;
     display: flex;
+    align-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 97px;
     justify-content: center;
-    align-content: center;
-    padding: 50px;
 }
