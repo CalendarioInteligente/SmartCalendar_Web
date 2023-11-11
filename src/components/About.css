@@ -1,17 +1,20 @@
 #about {
     font-size: 36px;
-    /*padding-right: 97px;
-    display: inline-block;
-    vertical-align: middle;*/
     text-align: left;
     color: var(--white);
+
+    /*Centraliza o texto verticalmente*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#about > p {
+#about p {
     font-family: Inika-Regular;
 }
 
-#about > h1 {
+#about h1 {
+    margin-bottom: 70px;
     font-family: SansitaOne;
     font-size: 61px;
     text-shadow: 4px 4px 4px #0000005e;

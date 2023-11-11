@@ -1,10 +1,7 @@
 .login-container {
+    display: block;
     font-family: ABeeZee-Regular;
-    text-align: left;
-    /*display: inline-block;*/
-    /*vertical-align: middle;*/
     min-height: 564px;
-    max-height: 0;
     max-width: 438px;
     background-image: linear-gradient(var(--white), #e6e6e6);
     padding: 85px 56px 81px 56px;
@@ -16,6 +13,7 @@
 .login-container input {
     background-color: var(--input-color);
     border: none;
+    padding-left: 10px;
     height: 47px;
     width: 100%;
     border-radius: 8px;
