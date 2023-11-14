@@ -84,7 +84,7 @@ const Login = () => {
         <a href="" style={{fontSize: 19, float: "right"}}>esqueci minha senha</a>
 
         <br/><br/>
-        <Button style={{marginTop: 29}} onClick={handleLogin}>logar</Button>
+        <Button style={{marginTop: 29}} onClick={handleLogin} className="bntLogin">logar</Button>
       </form>
       <p style={{fontSize: 24, textAlign: "center"}}>Não possui cadastro?<br/><a href="">cadastre-se</a></p>
     </div>

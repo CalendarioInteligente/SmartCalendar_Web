@@ -1,0 +1,16 @@
+.smart-calendar {
+    color: red;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.smart-calendar td th {
+    border: 1px solid #dddddd;
+}
+
+#calendar {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -8,3 +8,20 @@ header > nav {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
+.user-image {
+    width: 30px; /* Ajuste o tamanho conforme necessário */
+    height: 30px; /* Ajuste o tamanho conforme necessário */
+    border-radius: 50%; /* Para uma imagem de usuário redonda */
+}
+
+body {
+    background-color: var(--light-blue);
+}
+
+.calendario {
+    font-family: SansitaOne;
+    color: var(--white);
+    font-size: 26px;
+    color: white;
+  }

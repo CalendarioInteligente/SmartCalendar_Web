@@ -4,9 +4,11 @@ import { Routes as RouterRoutes, Route as RouterRoute } from "react-router-dom";
 
 import './App.css'
 
-import SmartCalendar from "./SmartCalendar";
+//import SmartCalendar from "./pages/SmartCalendar";
 import LoginPage from "./pages/LoginPage";
-import Header from './components/Header'
+import Header from './components/Header';
+import CalendarPage from "./pages/CalendarPage";
+
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
       <Header/>
       <RouterRoutes>
         <RouterRoute path="/login" element={<LoginPage />} />
-        <RouterRoute path="/" element={<SmartCalendar />} />
+        <RouterRoute path="/" element={<CalendarPage />} />
       </RouterRoutes>
     </Router>
   );

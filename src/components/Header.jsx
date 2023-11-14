@@ -6,10 +6,10 @@ const Header = () => {
         <header>
             <nav>
                 <ul>
-                    <Link to="/">Página Inicial</Link>
+                    <Link to="/" className="calendario">Smart Calendar</Link>
                 </ul>
                 <ul id="login-btn">
-                    <Link to="/login">Login</Link>
+                    <Link to="/login"><img src="./user.png" alt="user_image" id="user-image"/></Link>
                 </ul>
             </nav>
         </header>
