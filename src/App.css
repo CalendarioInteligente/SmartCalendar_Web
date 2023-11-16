@@ -1,4 +1,4 @@
 
-a, a:visited {
+.a, .a:visited {
   color: var(--a-color);
 }

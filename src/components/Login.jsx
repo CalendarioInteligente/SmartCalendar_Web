@@ -81,14 +81,14 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <a href="" style={{fontSize: 19, float: "right"}}>esqueci minha senha</a>
+        <a href="" className="a" style={{fontSize: 19, float: "right"}}>esqueci minha senha</a>
 
         <br/><br/>
         <Button style={{marginTop: 29}} onClick={handleLogin} className="bntLogin">logar</Button>
       </form>
-      <p style={{fontSize: 24, textAlign: "center"}}>Não possui cadastro?<br/><a href="">cadastre-se</a></p>
+      <p style={{fontSize: 24, textAlign: "center"}}>Não possui cadastro?<br/><a href="" className="a">cadastre-se</a></p>
     </div>
   );
 }
 
-  export default Login;
+export default Login;

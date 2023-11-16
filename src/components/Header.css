@@ -7,21 +7,25 @@ header > nav {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    height: 100%;
+    align-items: center;
 }
 
 .user-image {
-    width: 30px; /* Ajuste o tamanho conforme necessário */
-    height: 30px; /* Ajuste o tamanho conforme necessário */
-    border-radius: 50%; /* Para uma imagem de usuário redonda */
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%;
 }
 
 body {
     background-color: var(--light-blue);
-}
+} 
 
 .calendario {
     font-family: SansitaOne;
-    color: var(--white);
-    font-size: 26px;
+    font-size: 35px;
+    margin-left: 70px;
+    text-decoration: none;
     color: white;
-  }
+    text-shadow: 4px 4px 4px #0000005e;
+}
