@@ -1,16 +1,9 @@
-.smart-calendar {
-    color: red;
-    border-collapse: collapse;
-    width: 100%;
+.evento-container {
+    display: block;
+    background-color: var(--white);
 }
 
-.smart-calendar td th {
-    border: 1px solid #dddddd;
-}
-
-#calendar {
+.main-page-container {
     width: 100%;
-    margin: auto;
     display: flex;
-    flex-wrap: wrap;
 }

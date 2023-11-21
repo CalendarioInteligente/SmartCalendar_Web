@@ -1,92 +1,51 @@
 import React, { useState } from "react";
+
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import "./SmartCalendar.css"
+import Button from "./Button";
+
+const EventWindow = (props) => {
+
+  function handleEvent() {
+
+  }
+
+  return (
+    <form className="login-container" style={{width: "100%", minHeight: 200, borderRadius: 0, boxShadow: "none", backgroundImage: "none", backgroundColor: "white"}}>
+      <label htmlFor="titulo">Titulo</label>
+      <input type="text" name="titulo" id="titulo" />
+      <label htmlFor="descricao">Descrição</label>
+      <input type="text" name="descricao" id="descricao" />
+      <label htmlFor="horario">Horario</label>
+      <input type="time" name="horario" id="horario" />
+      <br/><br/>
+      <Button style={{marginTop: 29}} onClick={handleEvent} className="bntLogin">Adicionar</Button>
+    </form>
+  )
+}
 
 const SmartCalendar = () => {
-    const date = new Date();
-    const [month, setMonth] = useState(date.getMonth());
-    const [year, setYear] = useState(date.getYear());
+  const [showWindow, setShowWindow] = useState(false);
+  const [day, setDay] = useState(new Date());
 
-    const generateCalendario = (year, month) => {
-        const diasSemana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta"]
+  function onClickDay(value) {
+    console.log(value)
+    setDay(value);
+    setShowWindow(true);
 
-        const date = new Date(year, month, 0);
-
-        // Pega os dias do mês
-        const numberOfDays = date.getDate();
-
-        // Em que dia da semana o primeiro dia começa
-        const firstDayOfWeekDigit = date.getDay();
-
-        // Em que dia da semana o ultimo dia termina
-        const lastDayOfWeekDigit = new Date(year, month, numberOfDays).getDay();
-
-        // Gera uma lista 
-        const dias = []
-        
-        dias.push([])
-        for (let i = firstDayOfWeekDigit; i <= 7; i++) {
-            dias[0].push(i);
-        }
-
-        return (
-            <table>
-                <tr>
-                {diasSemana.map(v => (
-                    <th key={v}>{v}</th>
-                ))}
-                </tr>
-                {}
-            </table>
-        )
-    }
-  
-    return (
-      <table className="smart-calendar">
-        {generateCalendario(year, month)}
-      </table>
-    )
+    console.log(day);
   }
 
   
-export default SmartCalendar;
-
-/**
- * import React from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-
-const localizer = momentLocalizer(moment);
-
-/*
-const SmartCalendar = () => {
-  const events = [
-    {
-      title: "Evento 1",
-      start: new Date(),
-      end: new Date(),
-    },
-    {
-      title: "Evento 2",
-      start: moment().add(1, "days").toDate(),
-      end: moment().add(1, "days").toDate(),
-    },
-  ];
 
   return (
-    <div>
-      <h1>Calendário Inteligente</h1>
-      <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500 }}
-      />
+    <div className="main-page-container">
+      <Calendar onClickDay={onClickDay} value={day} />
+      {showWindow ? <EventWindow/> : null}
     </div>
-  );
-};
+  )
+}
 
+  
 export default SmartCalendar;
-
-*/
