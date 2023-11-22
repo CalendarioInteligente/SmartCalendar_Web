@@ -1,9 +1,14 @@
-.evento-container {
-    display: block;
-    background-color: var(--white);
-}
 
 .main-page-container {
-    width: 100%;
+    background-image: linear-gradient(var(--light-blue), var(--dark-blue));
+    flex-direction: row;
+    min-height: calc(100vh - 58px); /*Header offset*/
+    max-width: 100%;
+    padding: 50px;
     display: flex;
+    justify-content: center;
+}
+
+.main-page-container > div {
+    
 }

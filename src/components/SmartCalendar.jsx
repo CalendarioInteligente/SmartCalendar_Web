@@ -7,21 +7,23 @@ import Button from "./Button";
 
 const EventWindow = (props) => {
 
-  function handleEvent() {
-
+  function handleEvent(e) {
+    e.preventDefault();
+    props.onClose()
   }
 
   return (
-    <form className="login-container" style={{width: "100%", minHeight: 200, borderRadius: 0, boxShadow: "none", backgroundImage: "none", backgroundColor: "white"}}>
-      <label htmlFor="titulo">Titulo</label>
-      <input type="text" name="titulo" id="titulo" />
-      <label htmlFor="descricao">Descrição</label>
-      <input type="text" name="descricao" id="descricao" />
-      <label htmlFor="horario">Horario</label>
-      <input type="time" name="horario" id="horario" />
-      <br/><br/>
-      <Button style={{marginTop: 29}} onClick={handleEvent} className="bntLogin">Adicionar</Button>
-    </form>
+      <form className="login-container" style={{display: "block", width: "100%", minHeight: 200, borderRadius: 0, boxShadow: "none", backgroundImage: "none", backgroundColor: "white"}}>
+        <input type="date" name="" id="" value={new Date.parse(props.date)}/>
+        <label htmlFor="titulo">Titulo</label>
+        <input type="text" name="titulo" id="titulo" />
+        <label htmlFor="descricao">Descrição</label>
+        <input type="text" name="descricao" id="descricao" />
+        <label htmlFor="horario">Horario</label>
+        <input type="time" name="horario" id="horario" />
+        <br/><br/>
+        <Button style={{marginTop: 29}} onClick={handleEvent} className="bntLogin">Adicionar</Button>
+      </form>
   )
 }
 
@@ -37,12 +39,14 @@ const SmartCalendar = () => {
     console.log(day);
   }
 
-  
+function onClose() {
+    setShowWindow(false);
+}
 
   return (
     <div className="main-page-container">
       <Calendar onClickDay={onClickDay} value={day} />
-      {showWindow ? <EventWindow/> : null}
+      {showWindow ? <EventWindow date={day} onClose={onClose}/> : null}
     </div>
   )
 }
