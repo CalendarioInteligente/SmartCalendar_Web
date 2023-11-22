@@ -11,10 +11,9 @@ header > nav {
     align-items: center;
 }
 
-.user-image {
-    width: 30px; 
-    height: 30px; 
-    border-radius: 50%;
+#user-image {
+    height: 40px; 
+    
 }
 
 body {
