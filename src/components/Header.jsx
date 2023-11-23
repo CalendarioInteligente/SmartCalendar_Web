@@ -24,6 +24,7 @@ const Header = () => {
             const response = await axios.post(URL_LOGOUT);
         } catch {}
 
+        setAutenticado(false);
         localStorage.removeItem("session")
         navigate('/');
     }
