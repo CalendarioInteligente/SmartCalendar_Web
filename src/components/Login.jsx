@@ -8,9 +8,21 @@ import './Login.css'
 import { useNavigate } from "react-router-dom";
 
 import axios from "../api/axios"
+import authenticate from "../api/authenticate";
 const LOGIN_URL = "/api/login"
 
 const Login = () => {
+  useEffect(() => {
+    async function fetchData() {
+        const validation = await authenticate();
+
+        if (validation) {
+            navigate('/')
+        }
+    };
+    fetchData();    
+}, [])
+
   const { setAuth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,8 +44,6 @@ const Login = () => {
       senha: password
     }
 
-    console.log(JSON.stringify(params));
-
     let response;
     try {
       response = await axios.post(LOGIN_URL, JSON.stringify(params));
@@ -45,7 +55,6 @@ const Login = () => {
       navigate("/");
       
     } catch (err) {
-      console.error(err?.response?.data?.message)
       if (!err?.response) {
         // No server response
       } else if (err.response?.status === 400) {
