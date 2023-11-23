@@ -22,14 +22,13 @@ const EventWindow = (props) => {
     const params = {
       titulo: titulo,
       descricao: descricao,
-      data: parsedDate,
-      tipo: 0
+      data: parsedDate
     }
 
     try {
       const response = await axios.post(POST_EVENT_URL, JSON.stringify(params));
 
-      console.log(JSON.stringify(response?.data))
+      props.closeWindow()
     } catch (err) {
       console.error(err);
       if (!err?.response) {
@@ -42,8 +41,6 @@ const EventWindow = (props) => {
         // Login failed
       }
     }
-
-    props.closeWindow()
   }
 
   return (
