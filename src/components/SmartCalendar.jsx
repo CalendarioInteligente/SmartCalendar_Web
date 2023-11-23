@@ -4,23 +4,55 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import "./SmartCalendar.css"
 import Button from "./Button";
+import axios from "../api/axios";
+
+const POST_EVENT_URL = '/api/agendamentos/'
 
 const EventWindow = (props) => {
+  const [titulo, setTitulo] = useState('');
+  const [descricao, setDescricao] = useState('');
+  const [horario, setHorario] = useState(new Date().getTime());
 
-  function handleEvent(e) {
+  async function handleEvent(e) {
     e.preventDefault();
-    props.onClose()
+
+    // Concatena a data e o horario e envia para o restful
+    const parsedDate = new Date(Date.parse(props.date + ' ' + horario)).toISOString();
+
+    const params = {
+      titulo: titulo,
+      descricao: descricao,
+      data: parsedDate
+    }
+
+    try {
+      const response = await axios.post(POST_EVENT_URL, JSON.stringify(params));
+
+      props.closeWindow()
+    } catch (err) {
+      console.error(err);
+      if (!err?.response) {
+        // No server response
+      } else if (err.response?.status === 400) {
+        // Missing email or password
+      } else if (err.response?.status === 401) {
+        // Unauthorized
+      } else {
+        // Login failed
+      }
+    }
   }
 
   return (
       <form className="login-container" style={{display: "block", width: "100%", minHeight: 200, borderRadius: 0, boxShadow: "none", backgroundImage: "none", backgroundColor: "white"}}>
-        <input type="date" name="" id="" value={new Date.parse(props.date)}/>
+        <label htmlFor="data">Data</label>
+        <input type="date" name="data" id="data" value={props.date} required readOnly/>
         <label htmlFor="titulo">Titulo</label>
-        <input type="text" name="titulo" id="titulo" />
+        <input type="text" name="titulo" id="titulo" required onChange={(e) => setTitulo(e.target.value)} />
         <label htmlFor="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" />
+        <input type="text" name="descricao" id="descricao" required onChange={(e) => setDescricao(e.target.value)} />
         <label htmlFor="horario">Horario</label>
-        <input type="time" name="horario" id="horario" />
+        <input type="time" name="horario" id="horario" required onChange={(e) => setHorario(e.target.value)} />
         <br/><br/>
         <Button style={{marginTop: 29}} onClick={handleEvent} className="bntLogin">Adicionar</Button>
       </form>
@@ -32,21 +64,18 @@ const SmartCalendar = () => {
   const [day, setDay] = useState(new Date());
 
   function onClickDay(value) {
-    console.log(value)
     setDay(value);
     setShowWindow(true);
-
-    console.log(day);
   }
 
-function onClose() {
+function closeWindow() {
     setShowWindow(false);
 }
 
   return (
     <div className="main-page-container">
       <Calendar onClickDay={onClickDay} value={day} />
-      {showWindow ? <EventWindow date={day} onClose={onClose}/> : null}
+      {showWindow ? <EventWindow date={day.toISOString().substr(0, 10)} closeWindow={closeWindow}/> : null}
     </div>
   )
 }

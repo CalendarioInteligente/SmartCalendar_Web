@@ -1,18 +1,20 @@
 
-
 import React, { useRef, useEffect, useState, useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 
 import Button from "./Button";
 import './Login.css'
 
+import { useNavigate } from "react-router-dom";
+
 import axios from "../api/axios"
-const LOGIN_URL = '/api/login'
+const LOGIN_URL = "/api/login"
 
 const Login = () => {
   const { setAuth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   /*useEffect(() => {
     userRef.current.focus();
@@ -25,27 +27,25 @@ const Login = () => {
   const handleLogin = async (e) => {
     // Previni botão de dar submit
     e.preventDefault();
-
     const params = {
       email: email,
       senha: password
     }
 
-    try {
-      const response = await axios.get(LOGIN_URL,
-        JSON.stringify(params),
-        {
-          withCredentials: true
-        }
-      );
+    console.log(JSON.stringify(params));
 
-      console.log(JSON.stringify(response?.data))
+    let response;
+    try {
+      response = await axios.post(LOGIN_URL, JSON.stringify(params));
       //const sessionId = response?.data?.sessionId;
       //setAuth({ email, password, sessionId });
 
       setEmail('')
       setPassword('')
+      navigate("/");
+      
     } catch (err) {
+      console.error(err?.response?.data?.message)
       if (!err?.response) {
         // No server response
       } else if (err.response?.status === 400) {
@@ -56,9 +56,6 @@ const Login = () => {
         // Login failed
       }
     }
-
-    // Envia informações para API
-    //axios.get('https://localhost:3000/api/login')
   }
 
   return (
