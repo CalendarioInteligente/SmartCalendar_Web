@@ -9,7 +9,6 @@ export default async function authenticate() {
     } catch {
         return false;
     }
-
     
 
     return true;

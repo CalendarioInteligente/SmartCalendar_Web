@@ -26,15 +26,12 @@ const Login = () => {
   const { setAuth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
-
-  /*useEffect(() => {
-    userRef.current.focus();
-  }, [])
 
   useEffect(() => {
     setErrMsg('');
-  }, [email, password])*/
+  }, [email, password])
 
   const handleLogin = async (e) => {
     // Previni botão de dar submit
@@ -52,17 +49,20 @@ const Login = () => {
 
       setEmail('')
       setPassword('')
-      navigate("/");
-      
+      navigate("/"); 
     } catch (err) {
       if (!err?.response) {
+        setErrMsg("Servidor fora do ar")
         // No server response
       } else if (err.response?.status === 400) {
+        setErrMsg("Senha ou email errado")
         // Missing email or password
       } else if (err.response?.status === 401) {
         // Unauthorized
+        setErrMsg("Sem autorização")
       } else {
         // Login failed
+        setErrMsg("Senha ou email errado")
       }
     }
   }
@@ -92,6 +92,7 @@ const Login = () => {
         <br/><br/>
         <Button style={{marginTop: 29}} onClick={handleLogin} className="bntLogin">logar</Button>
       </form>
+      {errMsg ? <p style={{color: "red", fontSize:"18px", textAlign: "center"}} >{errMsg}</p> : null}
       <p style={{fontSize: 24, textAlign: "center"}}>Não possui cadastro?<br/><a href="" className="a">cadastre-se</a></p>
     </div>
   );

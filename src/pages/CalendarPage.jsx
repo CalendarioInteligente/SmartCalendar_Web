@@ -6,16 +6,16 @@ import SmartCalendar from "../components/SmartCalendar.jsx"
 const CalendarPage = () => {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        async function fetchData() {
-            const validation = await authenticate();
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const validation = await authenticate();
 
-            if (!validation) {
-                navigate('/login')
-            }
-        };
-        fetchData();    
-    }, [])
+    //         if (!validation) {
+    //             navigate('/login')
+    //         }
+    //     };
+    //     fetchData();    
+    // }, [])
     
 
     return (
