@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+/*import 'react-calendar/dist/Calendar.css';*/
 import "./SmartCalendar.css"
 import Button from "./Button";
 import axios from "../api/axios";
@@ -74,8 +74,14 @@ function closeWindow() {
 
   return (
     <div className="main-page-container">
-      <Calendar onClickDay={onClickDay} value={day} />
-      {showWindow ? <EventWindow date={day.toISOString().substr(0, 10)} closeWindow={closeWindow}/> : null}
+      <div className="calendar-window-container">
+        <Calendar onClickDay={onClickDay} value={day} />
+        <EventWindow date={day.toISOString().substr(0, 10)} closeWindow={closeWindow}/>
+      </div>
+      <div>
+        
+      </div>
+      {/*showWindow ? <EventWindow date={day.toISOString().substr(0, 10)} closeWindow={closeWindow}/> : null*/}
     </div>
   )
 }
