@@ -7,7 +7,7 @@ import './App.css'
 //import SmartCalendar from "./pages/SmartCalendar";
 import LoginPage from "./pages/LoginPage";
 import Header from './components/Header';
-import CalendarPage from "./pages/CalendarPage";
+import SmartCalendar from "./pages/SmartCalendar";
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <Header/>
       <RouterRoutes>
         <RouterRoute path="/login" element={<LoginPage />} />
-        <RouterRoute path="/" element={<CalendarPage />} />
+        <RouterRoute path="/" element={<SmartCalendar />} />
       </RouterRoutes>
     </Router>
   );

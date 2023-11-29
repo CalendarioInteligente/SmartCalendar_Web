@@ -90,7 +90,7 @@ const Signup = ( props ) => {
         <input
           type="email"
           id="email"
-          autoComplete="false"
+          autoComplete="off"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -100,7 +100,7 @@ const Signup = ( props ) => {
         <input
           type="password"
           id="password"
-          autoComplete="false"
+          autoComplete="off"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -110,7 +110,7 @@ const Signup = ( props ) => {
         <input
           type="tel"
           id="telefone"
-          autoComplete="false"
+          autoComplete="off"
           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
           value={telefone}
           onChange={(e) => setTelefone(e.target.value)}
@@ -121,7 +121,7 @@ const Signup = ( props ) => {
         <input
           type="text"
           id="nome"
-          autoComplete="false"
+          autoComplete="off"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -131,7 +131,7 @@ const Signup = ( props ) => {
         <input
           type="text"
           id="sobrenome"
-          autoComplete="false"
+          autoComplete="off"
           value={sobrenome}
           onChange={(e) => setSobrenome(e.target.value)}
           required
@@ -215,7 +215,7 @@ const Login = ( props ) => {
         <input
           type="email"
           id="email"
-          autoComplete="false"
+          autoComplete="off"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -225,7 +225,7 @@ const Login = ( props ) => {
         <input
           type="password"
           id="password"
-          autoComplete="false"
+          autoComplete="off"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

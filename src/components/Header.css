@@ -11,7 +11,7 @@ header > nav {
     align-items: center;
 }
 
-#user-image {
+#user-icon {
     height: 45px;
     margin-right: 15px;
     border: white solid 3px;
@@ -21,7 +21,30 @@ header > nav {
 
 }
 
+#notification-icon {
+    height: 40px;
+    margin-right: 15px;
+    cursor: pointer;
+}
 
+#notification-bnt {
+    text-align: center;
+}
+
+.notification-content {
+    position: absolute;
+    background-color: white;
+    padding: 2px;
+    border-radius: 5px;
+    border-color: gray;
+
+    transform: translateX(-25%); 
+}
+
+.notification-content > p:hover {
+    background-color: gray;
+    filter: invert();
+}
 
 body {
     background-color: var(--light-blue);
@@ -35,3 +58,4 @@ body {
     color: white;
     text-shadow: 4px 4px 4px #0000005e;
 }
+

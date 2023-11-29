@@ -3,10 +3,6 @@ import './LoginPage.css'
 
 import About from '../components/About'
 
-import axios from "../api/axios";
-import { useEffect } from "react";
-import authenticate from "../api/authenticate";
-import { useNavigate } from "react-router-dom";
 import { Login, Signup } from "../components/Login";
 
 
