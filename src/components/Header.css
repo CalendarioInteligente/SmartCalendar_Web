@@ -31,6 +31,10 @@ header > nav {
     text-align: center;
 }
 
+#notification-bnt:hover {
+    transform: scale(102%);
+}
+
 .notification-content {
     position: absolute;
     background-color: white;

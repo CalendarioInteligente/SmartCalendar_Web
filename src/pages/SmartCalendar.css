@@ -1,14 +1,17 @@
 
 .main-page-container {
+    min-height: calc(100vh - 58px); /*Header offset*/
     background-image: linear-gradient(var(--light-blue), var(--dark-blue));
     flex-direction: row;
-    min-height: calc(100vh - 58px); /*Header offset*/
     max-width: 100%;
     padding: 50px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 15px;
+}
+
+.main-page-container > div {
+    box-shadow: 4px 4px 37px rgba(0, 0, 0, 0.55);
 }
 
 .calendar-window-container {
@@ -20,15 +23,118 @@
 
 .eventos-container {
     background-color: white;
-    min-height: 100%;
-    min-width: 50%;
+    min-width: 700px;
+    max-width: 100%;
+    max-height: 819px;
     padding: 15px;
     outline: 1px black solid;
+}
+
+.evento {
+    display: block;
+    list-style-type: none;
+    background-color: rgb(250, 250, 250);
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.219);
+    border-radius: 5px;
+    transition: all 0.15s ease;
+    
+}
+
+.evento:hover {
+    transform: scale(102%);
+    background-color: rgb(255, 255, 255);
+    outline: solid 1px rgba(0, 0, 0, 0.507);
+    cursor: pointer;
+}
+
+.evento-header {
+    display: flex;
+    gap: 50px;
+    background-color: rgba(0, 0, 0, 0.027);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.evento-buttons {
+    margin-top: 5px;
+    display: flex;
+    gap: 10px;
+}
+
+.small-button {
+    height: 30px;
+    border-radius: 10px;
+    padding: 10px;
+
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.322);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.small-button:hover {
+    outline: solid 1px black;
+    transform: scale(105%);
+}
+
+.editar-button {
+    
+}
+
+.confirmar-button {
+    background-color: greenyellow;
+}
+
+.remover-button {
+    background-color: rgb(252, 76, 76);
 }
 
 .adicionar-evento-container {
     font-family: ABeeZee-Regular;
     background-color: white;
-    padding: 85px 56px 81px 56px;
-    min-height: 100%;
+    padding: 85px 26px 81px 26px;
+    min-width: 200px;
+}
+
+.display-evento {
+    width: 100%;
+    height: 100%;
+    font-family: ABeeZee-Regular;
+    padding: 20px;
+    position: relative;
+    overflow-y: hidden;
+}
+
+.display-evento #data, .display-evento #horario {
+    font-size: 20px;
+}
+
+.display-evento #titulo, .display-evento #descricao {
+    all: unset;
+    outline: solid 1px rgba(0, 0, 0, 0.247);
+    border-radius: 10px;
+    width: 100%;
+    padding: 5px;
+    word-wrap: break-word;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.322);
+}
+
+.display-evento > #titulo {
+    font-size: 35px;
+    text-align: center;
+    
+}
+
+.display-evento > #descricao {
+    font-size: 20px;
+    height: 50%;
+}
+
+#display-evento-buttons {
+    display: flex;
+    position: absolute;
+    right:    4px;
+    bottom:   4px;
+    gap: 5px;
 }

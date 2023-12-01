@@ -2,3 +2,12 @@
 .a, .a:visited {
   color: var(--a-color);
 }
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color:#00000025;
+  height: 2px;
+}
