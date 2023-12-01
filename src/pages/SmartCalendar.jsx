@@ -5,6 +5,8 @@ import "../components/Calendar.css"
 import "./SmartCalendar.css"
 import EventWindow from "../components/EventWindow";
 import toIsoString from "../utils/locale-isostring";
+import axios from "../api/axios";
+import authenticate from "../api/authenticate";
 
 // Truncate string when showing the event list
 function truncateString(text) {
@@ -23,38 +25,28 @@ const SmartCalendar = () => {
   const [eventos, setEventos] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(-1);
 
-  // useEffect(() => {
-  //     async function fetchData() {
-  //         const validation = await authenticate();
+  async function getAgendamentos() {
+    const auth_response = await authenticate();
 
-  //         if (!validation) {
-  //             navigate('/login')
-  //         }
-  //     };
-  //     fetchData();    
-  // }, [])
+    if (!auth_response) {
+      return;
+    }
+
+    const API_GET_AGENDAMENTOS = '/api/user/' + auth_response.data.userId + '/agendamentos';
+    let data;
+
+    try {
+      let response = await axios.get(API_GET_AGENDAMENTOS);
+      data = JSON.parse(response.data.data)
+    } catch {
+
+    }
+
+    setEventos(data)
+  }
 
   useEffect(() => {
-    setEventos([
-    {
-      "titulo": "teste1",
-      "descricao": "lorem ipsum diaosjdasiojdao",
-      "data": toIsoString(day),
-      "id": 0
-    },
-    {
-      "titulo": "teste1",
-      "descricao": "descricao123",
-      "data": toIsoString(day),
-      "id": 1
-    },
-    {
-      "titulo": "teste1",
-      "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad in eius, facilis labore fugiat officiis dolore assumenda enim a ullam dignissimos repellat itaque placeat, beatae qui eaque quas, cum rem!",
-      "data": toIsoString(day),
-      "id": 2
-    }
-  ])
+    getAgendamentos();
   }, [])
 
   function getFormattedDate(iso_date) {
@@ -71,6 +63,24 @@ const SmartCalendar = () => {
     
     setData(datetime.substr(0, 10))
     setHorario(datetime.substr(11, 5))
+  }
+
+  async function deleteEvent(event_id, element) {
+
+    if (element) {
+      element.stopPropagation()
+    }
+
+    const API_DELETE_URL = '/api/agendamentos/' + event_id
+
+    try {
+      const response = await axios.delete(API_DELETE_URL);
+    } catch(e) {
+      console.log(e.request)
+    }
+
+    setSelectedEvent(-1);
+    getAgendamentos();
   }
 
   function onClickDay(value) {
@@ -108,7 +118,7 @@ const SmartCalendar = () => {
 
         <div id="display-evento-buttons">
           <button className="small-button" onClick={e => setSelectedEvent(-1)}>VOLTAR</button>
-          <button className="small-button remover-button" onClick={e => setSelectedEvent(-1)}>REMOVER</button>
+          <button className="small-button remover-button" onClick={() => deleteEvent(selectedEvent)}>REMOVER</button>
           <button className="small-button confirmar-button" onClick={e => setSelectedEvent(-1)}>CONFIRMAR</button>
         </div>
       </div>
@@ -120,7 +130,7 @@ const SmartCalendar = () => {
       <h3 style={{textAlign: "center"}}>Eventos</h3>
       <hr />
       <ul>
-        {eventos ? eventos.map((evento, i) => {
+        {eventos.length > 0 ? eventos.map((evento, i) => {
           return <li className="evento" key={evento.id} onClick={() => {handleClickEvent(evento)}}>
 
            <div className="evento-header">
@@ -133,11 +143,11 @@ const SmartCalendar = () => {
            <hr/>
 
            <div className="evento-buttons">
-            <button style={{marginLeft: "auto"}}className="editar-button small-button">EDITAR</button>
-            <button className="remover-button small-button">REMOVER</button>
+            <button style={{marginLeft: "auto"}}className="editar-button small-button" onClick={((e) => e.stopPropagation())}>EDITAR</button>
+            <button className="remover-button small-button" onClick={(e) => deleteEvent(evento.id, e)}>REMOVER</button>
            </div>
           </li>
-        }) : <p>Sem eventos</p>}
+        }) : <p style={{color: "black", textAlign: "center", fontSize: "30px", paddingTop: "20px"}}>Sem eventos</p>}
     </ul>
     </>
   }
@@ -147,7 +157,7 @@ const SmartCalendar = () => {
       { selectedEvent >= 0 ? null :
       <div className="calendar-window-container">
         <Calendar onClickDay={onClickDay} value={day} />
-        <EventWindow date={day.toISOString().substr(0, 10)}/>
+        <EventWindow onClick={getAgendamentos} date={day.toISOString().substr(0, 10)}/>
       </div>
       }
       <div className="eventos-container">

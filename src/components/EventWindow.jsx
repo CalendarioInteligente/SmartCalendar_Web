@@ -18,7 +18,7 @@ const EventWindow = (props) => {
     e.preventDefault();
 
     // Concatena a data e o horario e envia para o restful
-    const parsedDate = new Date(Date.parse(props.date + ' ' + horario)).toISOString();
+    const parsedDate = toIsoString(new Date(Date.parse(props.date + ' ' + horario)));
 
     const params = {
       titulo: titulo,
@@ -29,7 +29,9 @@ const EventWindow = (props) => {
     try {
       const response = await axios.post(POST_EVENT_URL, JSON.stringify(params));
 
-      props?.handleEvent()
+      setTitulo('')
+      setDescricao('')
+      props?.onClick()
     } catch (err) {
       console.error(err);
       if (!err?.response) {
@@ -55,6 +57,7 @@ const EventWindow = (props) => {
         <label htmlFor="horario">Horario</label>
         <input type="time" name="horario" id="horario" className="calendar-input" required defaultValue={horario} onChange={(e) => setHorario(e.target.value)} />
         <br/><br/>
+        <button className="small-button" style={{marginTop: 29, width: "100%", backgroundColor: "blue"}}>Adicionar</button>
         <Button style={{marginTop: 29}} onClick={handleEvent} className="bntLogin">Adicionar</Button>
       </form>
   )

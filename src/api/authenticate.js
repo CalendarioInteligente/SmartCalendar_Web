@@ -6,10 +6,8 @@ export default async function authenticate() {
     let response
     try {
         response = await axios.get(API_URL)
+        return response.data;
     } catch {
         return false;
     }
-    
-
-    return true;
 }
