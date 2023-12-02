@@ -65,6 +65,35 @@ const SmartCalendar = () => {
     setHorario(datetime.substr(11, 5))
   }
 
+  async function updateEvent(event_id) {
+    const API_PUT_URL = '/api/agendamentos/' + event_id
+
+    const parsedDate = toIsoString(new Date(Date.parse(data + ' ' + horario)));
+
+    const params = {
+      titulo: titulo,
+      descricao: descricao,
+      data: parsedDate
+    }
+
+    try {
+      const response = await axios.put(API_PUT_URL, JSON.stringify(params));
+      setSelectedEvent(-1);
+      getAgendamentos();
+    } catch (err) {
+      console.error(err);
+      if (!err?.response) {
+        // No server response
+      } else if (err.response?.status === 400) {
+        // Missing email or password
+      } else if (err.response?.status === 401) {
+        // Unauthorized
+      } else {
+        // Login failed
+      }
+    }
+  }
+
   async function deleteEvent(event_id, element) {
 
     if (element) {
@@ -119,7 +148,7 @@ const SmartCalendar = () => {
         <div id="display-evento-buttons">
           <button className="small-button" onClick={e => setSelectedEvent(-1)}>VOLTAR</button>
           <button className="small-button remover-button" onClick={() => deleteEvent(selectedEvent)}>REMOVER</button>
-          <button className="small-button confirmar-button" onClick={e => setSelectedEvent(-1)}>CONFIRMAR</button>
+          <button className="small-button confirmar-button" onClick={() => updateEvent(selectedEvent)}>CONFIRMAR</button>
         </div>
       </div>
     )
