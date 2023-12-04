@@ -27,32 +27,35 @@ header > nav {
     cursor: pointer;
 }
 
-#notification-bnt {
-    text-align: center;
-}
-
-#notification-bnt:hover {
-    transform: scale(102%);
+#notification-icon:hover {
+    transform: scale(110%);
 }
 
 .notification-content {
     position: absolute;
     background-color: white;
-    padding: 2px;
+    padding: 10px;
     border-radius: 5px;
     border-color: gray;
+    width: 300px;
+    max-height: 300px;
+    overflow-y: auto;
 
-    transform: translateX(-25%); 
-}
-
-.notification-content > p:hover {
-    background-color: gray;
-    filter: invert();
+    transform: translateX(-150px); 
 }
 
 body {
     background-color: var(--light-blue);
 } 
+
+.notification {
+    list-style: none;
+    text-shadow: 2px 2px 6px #0000001f;
+}
+
+.notification:hover {
+    background-color: gray;
+}
 
 .calendario {
     font-family: SansitaOne;

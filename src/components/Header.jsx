@@ -6,11 +6,11 @@ import axios from '../api/axios';
 import authenticate from '../api/authenticate';
 import { useState } from 'react';
 import notification_img from '../imagens/notification.png';
+import truncateString from '../utils/truncate-string';
 
 const URL_LOGOUT = '/api/logout'
 
-const Header = () => {
-    const [autenticado, setAutenticado] = useState(false);
+const Header = (props) => {
     const navigate = useNavigate()
     const [showNotifications, setShowNotifications] = useState(false);
 
@@ -18,37 +18,69 @@ const Header = () => {
         setShowNotifications(!showNotifications);
     };
 
-    useEffect(() => {
-        async function fetchData() {
-            setAutenticado(await authenticate());
-        };
-        fetchData();    
-    }, [])
+    async function handleLogout(e) {
+        e.preventDefault();
 
-    async function handleLogout() {
         try {
             const response = await axios.post(URL_LOGOUT);
         } catch {}
 
-        setAutenticado(false);
+        props.setAutenticado(false);
         localStorage.removeItem("session")
-        navigate('/');
+        //navigate('/');
     }
 
     const notifications = [
         {
             "id": 1,
             "titulo": "teste",
+            "descricao": truncateString("Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem cumque vero itaque debitis, reprehenderit molestias, odit, nihil nobis sit ut omnis. Molestiae alias laudantium optio doloribus ex dicta temporibus deserunt?"),
             "data": new Date().toISOString(),
             "seen": false,
         },
         {
             "id": 2,
-            "titulo": "teste2",
+            "titulo": "teste",
+            "descricao": truncateString("Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem cumque vero itaque debitis, reprehenderit molestias, odit, nihil nobis sit ut omnis. Molestiae alias laudantium optio doloribus ex dicta temporibus deserunt?"),
             "data": new Date().toISOString(),
             "seen": false,
-        }
+        },
+        {
+            "id": 3,
+            "titulo": "teste",
+            "descricao": truncateString("Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem cumque vero itaque debitis, reprehenderit molestias, odit, nihil nobis sit ut omnis. Molestiae alias laudantium optio doloribus ex dicta temporibus deserunt?"),
+            "data": new Date().toISOString(),
+            "seen": false,
+        },
+        {
+            "id": 4,
+            "titulo": "teste",
+            "descricao": truncateString("Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem cumque vero itaque debitis, reprehenderit molestias, odit, nihil nobis sit ut omnis. Molestiae alias laudantium optio doloribus ex dicta temporibus deserunt?"),
+            "data": new Date().toISOString(),
+            "seen": false,
+        },
+        {
+            "id": 5,
+            "titulo": "teste",
+            "descricao": truncateString("Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem cumque vero itaque debitis, reprehenderit molestias, odit, nihil nobis sit ut omnis. Molestiae alias laudantium optio doloribus ex dicta temporibus deserunt?"),
+            "data": new Date().toISOString(),
+            "seen": false,
+        },
     ]
+    
+    function displayNotifications() {
+        return (
+        <div className= "notification-content">
+            {notifications.map((e) => {
+                return <li className='notification' key={e.id}>
+                    <p><b>{e.titulo}</b></p>
+                    <p>{e.descricao}</p>
+                    <hr/>
+                </li>
+            })}
+        </div>
+        )
+    }
 
     return (
         <header>
@@ -58,15 +90,10 @@ const Header = () => {
                 </ul>
                 <ul id= "notification-bnt">
                     <img src= {notification_img} alt= "notification_icon" onClick= {handleNotification} id= "notification-icon" />
-
-                    {showNotifications && (
-                        <div className= "notification-content">
-                            <p>Notificação 1</p>
-                            <p>Notificação 2</p>
-                        </div>
-                    )}
-
-                    { autenticado ? <a onClick={handleLogout} href="">Logout</a> : <Link to="/login"><img src={user} alt="user_image" id="user-icon"/></Link> }
+                    {showNotifications && displayNotifications()}
+                </ul>
+                <ul>
+                    { props.autenticado ? <Link to="/"><a onClick={e => handleLogout(e)} href="" style={{paddingRight: "10px"}}>Logout</a></Link> : <Link to="/login"><img src={user} alt="user_image" id="user-icon"/></Link> }
                 </ul>
             </nav>
         </header>

@@ -7,18 +7,7 @@ import EventWindow from "../components/EventWindow";
 import toIsoString from "../utils/locale-isostring";
 import axios from "../api/axios";
 import authenticate from "../api/authenticate";
-
-// Truncate string when showing the event list
-function truncateString(text) {
-  const MAX_SIZE = 100;
-  let truncated = text.substr(0, MAX_SIZE);
-
-  if (text.length > MAX_SIZE) {
-    truncated = truncated + '...';
-  }
-
-  return truncated
-}
+import truncateString from "../utils/truncate-string";
 
 const SmartCalendar = () => {
   const [day, setDay] = useState(new Date());

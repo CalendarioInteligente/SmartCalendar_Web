@@ -57,7 +57,6 @@ const EventWindow = (props) => {
         <label htmlFor="horario">Horario</label>
         <input type="time" name="horario" id="horario" className="calendar-input" required defaultValue={horario} onChange={(e) => setHorario(e.target.value)} />
         <br/><br/>
-        <button className="small-button" style={{marginTop: 29, width: "100%", backgroundColor: "blue"}}>Adicionar</button>
         <Button style={{marginTop: 29}} onClick={handleEvent} className="bntLogin">Adicionar</Button>
       </form>
   )
