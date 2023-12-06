@@ -9,10 +9,15 @@ const EventWindow = (props) => {
   const [titulo, setTitulo] = useState('');
   const [descricao, setDescricao] = useState('');
   const [horario, setHorario] = useState();
+  const [errMsg, setErrMsg] = useState("");
 
   useState(() => {
     setHorario(toIsoString(new Date()).substr(11, 5));
   }, [])
+
+  useEffect(() => {
+    setErrMsg('');
+  }, [titulo, descricao, horario])
 
   async function handleEvent(e) {
     e.preventDefault();
@@ -31,9 +36,11 @@ const EventWindow = (props) => {
 
       setTitulo('')
       setDescricao('')
+      setErrMsg('')
       props?.onClick()
     } catch (err) {
       console.error(err);
+      setErrMsg('Falha ao enviar evento, verifique se a data é valida.')
       if (!err?.response) {
         // No server response
       } else if (err.response?.status === 400) {
@@ -57,6 +64,7 @@ const EventWindow = (props) => {
         <label htmlFor="horario">Horario</label>
         <input type="time" name="horario" id="horario" className="calendar-input" required defaultValue={horario} onChange={(e) => setHorario(e.target.value)} />
         <br/><br/>
+        {errMsg ? <p style={{color: "red", fontSize:"18px", textAlign: "center"}} >{errMsg}</p> : null}
         <Button style={{marginTop: 29}} onClick={handleEvent} className="bntLogin">Adicionar</Button>
       </form>
   )
