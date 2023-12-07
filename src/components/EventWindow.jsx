@@ -58,11 +58,11 @@ const EventWindow = (props) => {
         <label htmlFor="data">Data</label>
         <input type="date" name="data" id="data" className="calendar-input" value={props.date} required readOnly/>
         <label htmlFor="titulo">Titulo</label>
-        <input type="text" name="titulo" id="titulo" required className="calendar-input" onChange={(e) => setTitulo(e.target.value)} autoComplete="off"/>
+        <input type="text" name="titulo" id="titulo" required className="calendar-input" value={titulo} onChange={(e) => setTitulo(e.target.value)} autoComplete="off"/>
         <label htmlFor="descricao">Descrição</label>
-        <input type="text" name="descricao" id="descricao" className="calendar-input" required onChange={(e) => setDescricao(e.target.value)} autoComplete="off"/>
+        <input type="text" name="descricao" id="descricao" className="calendar-input" value={descricao} required onChange={(e) => setDescricao(e.target.value)} autoComplete="off"/>
         <label htmlFor="horario">Horario</label>
-        <input type="time" name="horario" id="horario" className="calendar-input" required defaultValue={horario} onChange={(e) => setHorario(e.target.value)} />
+        <input type="time" name="horario" id="horario" className="calendar-input" value={horario} required defaultValue={horario} onChange={(e) => setHorario(e.target.value)} />
         <br/><br/>
         {errMsg ? <p style={{color: "red", fontSize:"18px", textAlign: "center"}} >{errMsg}</p> : null}
         <Button style={{marginTop: 29}} onClick={handleEvent} className="bntLogin">Adicionar</Button>

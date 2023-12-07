@@ -26,8 +26,11 @@ const Header = (props) => {
         } catch {}
 
         props.setAutenticado(false);
-        localStorage.removeItem("session")
-        //navigate('/');
+
+        try{
+            localStorage.removeItem("session")
+        } catch {}
+        navigate('/login');
     }
 
     const notifications = [
@@ -89,7 +92,7 @@ const Header = (props) => {
                     <Link to="/" className="calendario">Smart Calendar</Link>
                 </ul>
                 <ul id= "notification-bnt">
-                    <img src= {notification_img} alt= "notification_icon" onClick= {handleNotification} id= "notification-icon" />
+                    {/*<img src= {notification_img} alt= "notification_icon" onClick= {handleNotification} id= "notification-icon" />*/}
                     {showNotifications && displayNotifications()}
                 </ul>
                 <ul>

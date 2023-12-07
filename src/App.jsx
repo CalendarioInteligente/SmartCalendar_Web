@@ -1,5 +1,5 @@
-import {React, useEffect, useState} from "react";
-import { BrowserRouter as Router} from "react-router-dom";
+import {React, useEffect, useState } from "react";
+import { BrowserRouter as Router, useNavigate} from "react-router-dom";
 import { Routes as RouterRoutes, Route as RouterRoute } from "react-router-dom"; // Importe Routes e Route
 
 import './App.css'
@@ -18,15 +18,15 @@ function App() {
     async function fetchData() {
         setAutenticado(await authenticate());
     };
-    fetchData();    
+    fetchData();
   }, [])
 
   return (
     <Router>
       <Header autenticado={autenticado} setAutenticado={setAutenticado}/>
       <RouterRoutes>
-        <RouterRoute path="/login" element={<LoginPage />} />
-        <RouterRoute path="/" element={<SmartCalendar />} />
+        <RouterRoute path="/login" element={<LoginPage autenticado={autenticado} setAutenticado={setAutenticado}/>} />
+        <RouterRoute path="/" element={<SmartCalendar autenticado={autenticado} setAutenticado={setAutenticado}/>} />
       </RouterRoutes>
     </Router>
   );

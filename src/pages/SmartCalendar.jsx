@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 
 import Calendar from 'react-calendar';
 import "../components/Calendar.css"
@@ -8,11 +8,13 @@ import toIsoString from "../utils/locale-isostring";
 import axios from "../api/axios";
 import authenticate from "../api/authenticate";
 import truncateString from "../utils/truncate-string";
+import { useNavigate } from "react-router-dom";
 
-const SmartCalendar = () => {
+const SmartCalendar = ( props ) => {
   const [day, setDay] = useState(new Date());
   const [eventos, setEventos] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(-1);
+  const navigate = useNavigate();
 
   async function getAgendamentos() {
     const auth_response = await authenticate();
@@ -35,6 +37,16 @@ const SmartCalendar = () => {
   }
 
   useEffect(() => {
+    async function fetchData() {
+        const validation = await authenticate();
+
+        if (!validation) {
+          props.setAutenticado(false);
+          navigate('/login')
+        }
+    };
+    fetchData();
+
     getAgendamentos();
   }, [])
 

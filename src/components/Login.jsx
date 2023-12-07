@@ -65,6 +65,7 @@ const Signup = ( props ) => {
       //const sessionId = response?.data?.sessionId;
       //setAuth({ email, password, sessionId });
 
+      props.setAutenticado(true);
       navigate("/"); 
     } catch (err) {
       if (!err?.response) {
@@ -148,17 +149,6 @@ const Signup = ( props ) => {
 }
 
 const Login = ( props ) => {
-  useEffect(() => {
-    async function fetchData() {
-        const validation = await authenticate();
-
-        if (validation) {
-            navigate('/')
-        }
-    };
-    fetchData();    
-}, [])
-
   const changeForm = (e) => {
     e.preventDefault();
     props.handleSignup();
@@ -188,6 +178,7 @@ const Login = ( props ) => {
       //const sessionId = response?.data?.sessionId;
       //setAuth({ email, password, sessionId });
 
+      props.setAutenticado(true);
       setEmail('')
       setPassword('')
       navigate("/"); 
