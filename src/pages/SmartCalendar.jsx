@@ -173,7 +173,7 @@ const SmartCalendar = ( props ) => {
            <hr/>
 
            <div className="evento-buttons">
-            <button style={{marginLeft: "auto"}}className="editar-button small-button" onClick={((e) => e.stopPropagation())}>EDITAR</button>
+            <button style={{marginLeft: "auto"}}className="editar-button small-button" onClick={((e) => handleClickEvent(evento))}>EDITAR</button>
             <button className="remover-button small-button" onClick={(e) => deleteEvent(evento.id, e)}>REMOVER</button>
            </div>
           </li>
