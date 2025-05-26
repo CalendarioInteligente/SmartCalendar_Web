@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# SmartCalendar\_web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**SmartCalendar\_web** é uma aplicação web em React para gerenciamento inteligente de eventos e compromissos. Ela oferece autenticação de usuário, interface de login e signup, além de um calendário interativo para criar, editar e remover agendamentos.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Tecnologias e Dependências
 
-### `npm start`
+* **React** (v18+)
+* **React Router DOM** 
+* **React Calendar** 
+* **Axios** 
+* **Context API** 
+* **CSS Modules / Arquivos CSS** 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> Confira o `package.json` para a lista completa de dependências.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ⚙️ Como Executar Localmente
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Pré-requisitos
 
-### `npm run build`
+* Node.js (>=16)
+* npm ou yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Passos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone o repositório:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/seu-usuario/SmartCalendar_web.git
+   ```
 
-### `npm run eject`
+2. Acesse a pasta do projeto:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   cd SmartCalendar_web
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Instale as dependências:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Configure variáveis de ambiente (opcional):
 
-## Learn More
+   * `REACT_APP_API_BASE_URL` (ex: `http://localhost:3000`)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   > Se não informado, a aplicação usa `http://localhost:3000` por padrão.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. Inicie a aplicação em modo de desenvolvimento:
 
-### Code Splitting
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+6. Abra no navegador:
 
-### Analyzing the Bundle Size
+    [http://localhost:3000](http://localhost:3000)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🔒 Autenticação
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Ao carregar a aplicação, é feita uma chamada para `/api/oauth` via `authenticate.js`.
+- Se o usuário não estiver autenticado, é redirecionado para `/login`.
+- Após login ou signup, recebe credenciais via cookie;
+- O contexto global (`AuthProvider`) gerencia o estado de autenticação.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🗓️ Funcionalidades Principais
 
-### Deployment
+- **Login e Signup**: Tela única que alterna entre login e cadastro (`LoginPage.jsx`).
+- **Calendário Interativo**: Seleção de dia com `react-calendar` e janela de criação de eventos (componente `EventWindow`).
+- **Listagem de Eventos**: Visualização, edição e remoção de agendamentos na lateral.
+- **Requisições API**: Endpoints REST para CRUD de eventos (via `axios.js`).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 📝 Licença
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
