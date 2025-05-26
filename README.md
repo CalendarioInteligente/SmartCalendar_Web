@@ -22,7 +22,7 @@
 ### Pré-requisitos
 
 * Node.js (>=16)
-* npm ou yarn
+* npm 
 
 ### Passos
 
